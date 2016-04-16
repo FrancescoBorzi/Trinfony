@@ -1,3 +1,9 @@
-app:
-    resource: "@AppBundle/Controller/"
+trinfony_characters:
+    resource: "@TrinfonyCharactersBundle/Controller/"
     type:     annotation
+    prefix:   /
+
+trinfony_auth:
+    resource: "@TrinfonyAuthBundle/Controller/"
+    type:     annotation
+    prefix:   /

@@ -38,13 +38,25 @@ twig:
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver:   pdo_mysql
-        host:     "%database_host%"
-        port:     "%database_port%"
-        dbname:   "%database_name%"
-        user:     "%database_user%"
-        password: "%database_password%"
-        charset:  UTF8
+        default_connection: 'default'
+        connections:
+            default:
+                driver:   pdo_mysql
+                host:     '%auth_host%'
+                port:     '%auth_port%'
+                dbname:   '%auth_name%'
+                user:     '%auth_user%'
+                password: '%auth_password%'
+                charset:  UTF8
+            characters:
+                driver:   pdo_mysql
+                host:     '%characters_host%'
+                port:     '%characters_port%'
+                dbname:   '%characters_name%'
+                user:     '%characters_user%'
+                password: '%characters_password%'
+                charset:  UTF8
+
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml
         #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
