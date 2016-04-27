@@ -3,9 +3,20 @@
 security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    encoders:
+        Trinfony\AuthBundle\Entity\Account:
+            id: password_encoder
+
+    # ...
+
     providers:
-        in_memory:
-            memory: ~
+        our_db_provider:
+            entity:
+                class: TrinfonyAuthBundle:Account
+                property: username
+                manager_name: auth
+                # if you're using multiple entity managers
+                # manager_name: customer
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -14,7 +25,12 @@ security:
             security: false
 
         main:
-            anonymous: ~
+            pattern:    ^/
+            http_basic: ~
+            provider: our_db_provider
+            logout:
+              path:   /logout
+              target: /
             # activate different ways to authenticate
 
             # http_basic: ~

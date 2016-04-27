@@ -1,3 +1,5 @@
+logout:
+    path: /logout
 trinfony_characters:
     resource: "@TrinfonyCharactersBundle/Controller/"
     type:     annotation
